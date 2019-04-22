@@ -154,7 +154,7 @@
                 <span class="icon icon-home"></span>
                 <span class="tab-label">首页</span>
             </a>
-            <a class="tab-item" href="#signup">
+            <a class="tab-item active" href="#signup">
                 <span class="icon icon-me"></span>
                 <span class="tab-label">留个信</span>
             </a>
@@ -172,75 +172,78 @@
             </a>-->
         </nav>
         <div class="content">
-            <div class="list-block">
-                <ul>
-                    <!-- Text inputs -->
-                    <li>
-                        <div class="item-content">
-                            <div class="item-media"><i class="icon icon-form-email"></i></div>
-                            <div class="item-inner">
-                                <div class="item-title label">手机</div>
-                                <div class="item-input">
-                                    <input type="text" placeholder="手机">
+            <form action="javascript:0" class="sui-form form-horizontal sui-validate">
+                <div class="list-block">
+                    <ul>
+                        <!-- Text inputs -->
+                        <li>
+                            <div class="item-content">
+                                <div class="item-media"><i class="icon icon-form-email"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title label">手机</div>
+                                    <div class="item-input">
+                                        <input type="text" placeholder="手机" id="phoneNumber">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="item-content">
-                            <div class="item-media"><i class="icon icon-form-name"></i></div>
-                            <div class="item-inner">
-                                <div class="item-title label">姓名</div>
-                                <div class="item-input">
-                                    <input type="text" placeholder="姓名">
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title label">姓名</div>
+                                    <div class="item-input">
+                                        <input type="text" placeholder="姓名" id="name">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="item-content">
-                            <div class="item-media"><i class="icon icon-form-gender"></i></div>
-                            <div class="item-inner">
-                                <div class="item-title label">性别</div>
-                                <div class="item-input">
-                                    <select>
-                                        <option value="男">男</option>
-                                        <option value="nv ">女</option>
-                                    </select>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-media"><i class="icon icon-form-gender"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title label">性别</div>
+                                    <div class="item-input">
+                                        <select id="sex">
+                                            <option value="男">男</option>
+                                            <option value="nv ">女</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
+                        </li>
 
-                    <li>
-                        <div class="item-content">
-                            <div class="item-media"><i class="icon icon-form-password"></i></div>
-                            <div class="item-inner">
-                                <div class="item-title label">地区</div>
-                                <div class="item-input">
-                                    <input type="text" id="zhejiang">
+                        <li>
+                            <div class="item-content">
+                                <div class="item-media"><i class="icon icon-form-password"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title label">地区</div>
+                                    <div class="item-input">
+                                        <input type="text" id="area">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
-                    <li class="align-top">
-                        <div class="item-content">
-                            <div class="item-media"><i class="icon icon-form-comment"></i></div>
-                            <div class="item-inner">
-                                <div class="item-title label">留言</div>
-                                <div class="item-input">
-                                    <textarea></textarea>
+                        </li>
+                        <li class="align-top">
+                            <div class="item-content">
+                                <div class="item-media"><i class="icon icon-form-comment"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title label">留言</div>
+                                    <div class="item-input">
+                                        <textarea id="desc"></textarea>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="content-block">
-                <div class="row">
-                    <div class="col-100"><a href="#" class="button button-big button-fill button-success">提交</a></div>
+                        </li>
+                    </ul>
                 </div>
-            </div>
+
+                <div class="content-block">
+                    <div class="row">
+                        <div class="col-100"><button type="button" onclick="signup()" class="button button-big button-fill button-success" style="width: 100%">立即注册</button></div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -407,7 +410,7 @@
 <script type="text/javascript">
 
 
-    $("#zhejiang").picker({
+    $("#area").picker({
         toolbarTemplate: '<header class="bar bar-nav"><button class="button button-link pull-right close-picker">确定</button><h1 class="title">请选择称呼</h1></header>',
         cols: [
             {
@@ -420,6 +423,54 @@
             },
         ]
     });
+
+
+    function signup() {
+        let phoneNumber = $("#phoneNumber").val();
+        if(!phoneNumber){
+            $.toast("手机号不能为空");
+            return;
+        }
+
+        let name = $("#name").val();
+        if(!name){
+            $.toast("姓名不能为空");
+            return;
+        }
+
+        let sex = $("#sex").val();
+
+        let area = $("#area").val();
+        if(!area){
+            $.toast("地区不能为空");
+            return;
+        }
+
+        let desc = $("#desc").val();
+
+        $.ajax({
+            type: "POST",
+            url: "http://47.103.75.34:8080/java-coach/student/signup",
+            data: JSON.stringify({
+                "name": name,
+                "phoneNumber": phoneNumber,
+                "area": area,
+                "sex": sex,
+                "desc": desc,
+            }),
+            contentType: 'application/json;charset=UTF-8',
+            dataType: "json",
+            timeout: 5000,
+            success: function (response) {
+                if(response.returnCode === 0){
+                    $.toast("提交成功");
+                }else{
+                    $.toast("提交失败，可直接拨打波哥电话联系我们");
+                }
+            },
+        });
+    }
+
 
     /*var imgUrl = "http://www.baidu.com/img/bdlogo.gif";
     var lineLink = "http://www.baidu.com";
