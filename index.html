@@ -218,7 +218,7 @@
                             <div class="item-inner">
                                 <div class="item-title label">地区</div>
                                 <div class="item-input">
-                                    <input type="text" placeholder="地区" class="">
+                                    <input type="text" id="zhejiang">
                                 </div>
                             </div>
                         </div>
@@ -404,8 +404,24 @@
 <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
 <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
 
-<!--<script type="text/javascript">
-    var imgUrl = "http://www.baidu.com/img/bdlogo.gif";
+<script type="text/javascript">
+
+
+    $("#zhejiang").picker({
+        toolbarTemplate: '<header class="bar bar-nav"><button class="button button-link pull-right close-picker">确定</button><h1 class="title">请选择称呼</h1></header>',
+        cols: [
+            {
+                textAlign: 'center',
+                values: ['宁波市']
+            },
+            {
+                textAlign: 'center',
+                values: ['海曙区', '江北区', '北仑区', '镇海区', '鄞州区', '奉化区', '余姚市', '慈溪市', '象山县', '宁海县', '宁波市']
+            },
+        ]
+    });
+
+    /*var imgUrl = "http://www.baidu.com/img/bdlogo.gif";
     var lineLink = "http://www.baidu.com";
     var descContent = '亲子游来玩了';
     var shareTitle = '我的标题';
@@ -460,8 +476,8 @@
         WeixinJSBridge.on('menu:share:weibo', function (argv) {
             shareWeibo();
         });
-    }, false);
+    }, false);*/
 
-</script>-->
+</script>
 </body>
 </html>
